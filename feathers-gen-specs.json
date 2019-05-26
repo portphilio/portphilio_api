@@ -40,6 +40,16 @@
       "path": "/users",
       "isAuthEntity": false,
       "graphql": true
+    },
+    "artifacts": {
+      "name": "artifacts",
+      "nameSingular": "artifact",
+      "subFolder": "",
+      "fileName": "artifacts",
+      "adapter": "mongoose",
+      "path": "/artifacts",
+      "isAuthEntity": false,
+      "graphql": true
     }
   },
   "hooks": {

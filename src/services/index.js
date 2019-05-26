@@ -1,5 +1,6 @@
 
 // Configure the Feathers services. (Can be re-generated.)
+let artifacts = require('./artifacts/artifacts.service')
 let keys = require('./keys/keys.service')
 let users = require('./users/users.service')
 
@@ -8,6 +9,7 @@ let users = require('./users/users.service')
 
 // eslint-disable-next-line no-unused-vars
 let moduleExports = function (app) {
+  app.configure(artifacts)
   app.configure(keys)
   app.configure(users)
   // !code: func_return // !end
