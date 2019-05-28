@@ -4,7 +4,7 @@ module.exports = function (options = {}) {
     // make sure Authorize header is added to the feathers params
     req.feathers = { ...req.feathers, headers: req.headers }
     // pass the requesting IP address as well
-    req.feathers.ip = req.headers['x-real-ip']
+    req.feathers.ip = req.headers['x-real-ip'] || req.ip
     next()
   }
 }
