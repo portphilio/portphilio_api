@@ -61,6 +61,15 @@
         "*app"
       ],
       "singleService": ""
+    },
+    "search": {
+      "fileName": "search",
+      "camelName": "search",
+      "ifMulti": "y",
+      "multiServices": [
+        "*none"
+      ],
+      "singleService": ""
     }
   },
   "middlewares": {

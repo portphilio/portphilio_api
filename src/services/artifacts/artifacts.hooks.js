@@ -1,7 +1,9 @@
 
 // Hooks for service `artifacts`. (Can be re-generated.)
 const commonHooks = require('feathers-hooks-common')
-// !code: imports // !end
+// !code: imports
+const search = require('../../hooks/search')
+// !end
 
 // !<DEFAULT> code: used
 // eslint-disable-next-line no-unused-vars
@@ -14,9 +16,11 @@ const { create, update, patch, validateCreate, validateUpdate, validatePatch } =
 
 let moduleExports = {
   before: {
-    // !<DEFAULT> code: before
+    // !code: before
     all: [],
-    find: [],
+    find: [
+      search()
+    ],
     get: [],
     create: [],
     update: [],
