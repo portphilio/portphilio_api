@@ -50,6 +50,16 @@
       "path": "/artifacts",
       "isAuthEntity": false,
       "graphql": true
+    },
+    "tokens": {
+      "name": "tokens",
+      "nameSingular": "token",
+      "subFolder": "",
+      "fileName": "tokens",
+      "adapter": "generic",
+      "path": "/tokens",
+      "isAuthEntity": false,
+      "graphql": false
     }
   },
   "hooks": {
@@ -65,6 +75,15 @@
     "search": {
       "fileName": "search",
       "camelName": "search",
+      "ifMulti": "y",
+      "multiServices": [
+        "*none"
+      ],
+      "singleService": ""
+    },
+    "auth0-sanitize": {
+      "fileName": "auth0-sanitize",
+      "camelName": "auth0Sanitize",
       "ifMulti": "y",
       "multiServices": [
         "*none"

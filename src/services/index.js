@@ -2,6 +2,7 @@
 // Configure the Feathers services. (Can be re-generated.)
 let artifacts = require('./artifacts/artifacts.service')
 let keys = require('./keys/keys.service')
+let tokens = require('./tokens/tokens.service')
 let users = require('./users/users.service')
 
 // !code: imports // !end
@@ -11,6 +12,7 @@ let users = require('./users/users.service')
 let moduleExports = function (app) {
   app.configure(artifacts)
   app.configure(keys)
+  app.configure(tokens)
   app.configure(users)
   // !code: func_return // !end
 }
