@@ -13,7 +13,7 @@ let moduleExports = function (app) {
   let mongooseClient = app.get('mongooseClient')
   // !code: mongoose_func_init // !end
 
-  // !<DEFAULT> code: mongoose_client
+  // !code: mongoose_client
   const users = new mongooseClient.Schema(mongooseSchema, { timestamps: true })
   // !end
 
