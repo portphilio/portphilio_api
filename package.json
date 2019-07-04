@@ -50,7 +50,7 @@
     "helmet": "^3.18.0",
     "lodash.merge": "^4.6.1",
     "mongodb-core": "^3.2.7",
-    "mongoose": "^5.6.1",
+    "mongoose": "^5.6.3",
     "serve-favicon": "^2.5.0",
     "winston": "^3.2.1"
   },
