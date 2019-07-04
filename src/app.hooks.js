@@ -1,7 +1,7 @@
 
 // Application hooks that run for every service. (Can be re-generated.)
 const commonHooks = require('feathers-hooks-common')
-const auth0IpWhitelist = require('./hooks/auth0-ip-whitelist')
+const requestIsFromAuth0 = require('./hooks/auth0-ip-whitelist')
 // !code: imports
 const log = require('./hooks/log')
 const auth0Sanitize = require('./hooks/auth0-sanitize')
@@ -11,7 +11,7 @@ const { authorize } = require('@morphatic/feathers-auth0-authorize-hook')() // <
 
 // !code: used
 // eslint-disable-next-line no-unused-vars
-const { isProvider, unless } = commonHooks
+const { isProvider, unless, some } = commonHooks
 // !end
 // !code: init // !end
 
@@ -20,8 +20,7 @@ let moduleExports = {
     // !code: before
     all: [
       log(),
-      auth0IpWhitelist(),
-      unless(isProvider('server'), authorize)
+      unless(some(isProvider('server'), requestIsFromAuth0()), authorize)
     ],
     find: [],
     get: [],
@@ -33,10 +32,10 @@ let moduleExports = {
   },
 
   after: {
-    // !<DEFAULT> code: after
+    // !code: after
     all: [ log() ],
-    find: [ auth0Sanitize() ],
-    get: [ auth0Sanitize() ],
+    find: [ unless(isProvider('server')), auth0Sanitize() ],
+    get: [ unless(isProvider('server')), auth0Sanitize() ],
     create: [],
     update: [],
     patch: [],

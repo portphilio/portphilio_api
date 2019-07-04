@@ -18,6 +18,7 @@ let moduleExports = merge({},
       type: mongoose.Schema.Types.ObjectId,
       required: true
     },
+    uuid: String,
     uri: String,
     narrative: String,
     status: {

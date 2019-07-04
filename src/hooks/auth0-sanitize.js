@@ -7,7 +7,7 @@ const { checkContext, getItems, replaceItems } = require('feathers-hooks-common'
 module.exports = function () {
   return (context) => {
     // Skip if it's not the auth0/users or users service
-    if (!['auth0/users', 'users'].includes(context.service.path)) return context
+    if (!['auth0/users', 'users'].includes(context.path)) return context
     
     // Throw if it's NOT a find() or get() method.
     checkContext(context, 'after', ['find', 'get'])

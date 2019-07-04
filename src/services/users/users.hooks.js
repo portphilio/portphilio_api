@@ -20,7 +20,15 @@ let moduleExports = {
     get: [],
     create: [],
     update: [],
-    patch: [],
+    patch: [
+      context => {
+        context.params.mongoose = {
+          upsert: true,
+          writeResult: true
+        }
+        return context
+      }
+    ],
     remove: []
     // !end
   },

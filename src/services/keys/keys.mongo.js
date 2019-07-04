@@ -50,7 +50,7 @@ let moduleExports = merge({},
       kid: {
         title: "Key ID",
         description: "The unique identifier for the key.",
-        bsonType: "objectId"
+        bsonType: "string"
       },
       x5t: {
         title: "Thumbprint",

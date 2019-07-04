@@ -5,6 +5,7 @@
 // !code: imports
 const rp = require('request-promise')
 const jwt = require('jsonwebtoken')
+const logger = require('../../logger')
 // !end
 // !code: init // !end
 
@@ -13,6 +14,9 @@ class Service {
     this.options = options || {}
     // !code: constructor1 // !end
   }
+  setup (app) {
+    this.app = app
+  }
 
   // !<DEFAULT> code: find
   async find (params) {
@@ -20,11 +24,13 @@ class Service {
   }
   // !end
 
-  // !<DEFAULT> code: get
+  // !code: get
   async get (id, params) {
-    return {
-      id, text: `A new message with ID: ${id}!`
-    }
+    this.app.service('auth0/users').get(id).then(
+      user => {
+
+      }
+    )
   }
   // !end
 
@@ -40,13 +46,8 @@ class Service {
 
   // !code: update
   async update (id, data, params) {
-    return this.options.users.get(id, {
-      query: {
-        $select: [
-          'app_metadata'
-        ]
-      }
-    }).then(
+    logger.info('update tokens called with: %s', id)
+    return this.app.service('auth0/users').get(id).then(
       function(user) {
         return rp({
           method: 'POST',
@@ -58,16 +59,19 @@ class Service {
             grant_type: 'refresh_token',
             client_id: this.options.clientId,
             client_secret: this.options.clientSecret,
-            refresh_token: user.google.refresh_token  
+            refresh_token: user.app_metadata.google_refresh_token  
           }
         })
       }.bind(this)
     ).then(
       refreshed => {
-        const id_token = jwt.decode(refreshed.id_token)
+        // parse the response and extract the key values
+        const { access_token, id_token } = JSON.parse(refreshed)
+        // decode the id_token and extract the expiry timestamp
+        const { exp } = jwt.decode(id_token, { json: true })
         return {
-          access_token: refreshed.access_token,
-          expires_at: id_token.exp
+          accessToken: access_token,
+          expiresAt: exp
         }
       }
     )

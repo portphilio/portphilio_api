@@ -26,7 +26,34 @@ const mongoose = require('./mongoose')
 // !code: imports
 const auth0 = require('@morphatic/feathers-auth0')
 // !end
-// !code: init // !end
+// !code: init
+// Domains/IP Addresses whitelisted for CORS
+const whitelist = [
+  'https://portphil.io',
+  'https://*.portphil.io',
+  'https://portphilio.test',
+  'https://*.portphilio.test',
+  'https://portphilio.test:8080',
+  'https://*.portphilio.test:8080',
+  // Auth0 Whitelist
+  'https://138.91.154.99',
+  'https://54.183.64.135',
+  'https://54.67.77.38',
+  'https://54.67.15.170',
+  'https://54.183.204.205',
+  'https://54.173.21.107',
+  'https://54.85.173.28',
+  'https://35.167.74.121',
+  'https://35.160.3.103',
+  'https://35.166.202.113',
+  'https://52.14.40.253',
+  'https://52.14.38.78',
+  'https://52.14.17.114',
+  'https://52.71.209.77',
+  'https://34.195.142.251',
+  'https://52.200.94.42'
+]
+// !end
 
 const app = express(feathers())
 // !code: use_start // !end
@@ -42,7 +69,19 @@ app.use(helmet(
   // !code: helmet_config // !end
 ))
 app.use(cors(
-  // !code: cors_config // !end
+  // !code: cors_config
+  //  Allowed origins
+  {
+    origin: (origin, cb) => {
+      logger.info('request origin: %s', origin)
+      if (whitelist.includes(origin) || !origin) {
+        cb(null, true)
+      } else {
+        cb(new Error('Not allowed by CORS'))
+      }
+    }
+  }
+  // !end
 ))
 app.use(compress(
   // !code: compress_config // !end
@@ -84,6 +123,9 @@ app.configure(services)
 app.configure(channels)
 // !code: config_middle
 app.configure(auth0())
+// allow patch/update/delete of multiple users at once
+// needed to be able to patch-by-auth0-ID from Auth0 rule
+app.service('auth0/users').multi = true
 // !end
 
 // Configure a middleware for 404s and the error handler

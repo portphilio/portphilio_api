@@ -19,6 +19,20 @@ if (process.env.NODE_ENV !== 'production') {
   }, app)
   server.listen(port)
   app.setup(server)  // see: https://docs.feathersjs.com/api/express.html#https
+  if (process.env.NODE_ENV === 'ngrok') {
+    const ngrok = require('ngrok');
+    (async () => {
+      const ngrok_url = await ngrok.connect({
+        proto: 'http',
+        addr: `https://api.portphilio.test:${port}`,
+        subdomain: 'api-portphilio',
+        authtoken: app.get('ngrok-token'),
+        log: 'stdout',
+        bind_tls: true
+      })
+      logger.info('ngrok serving Portphilio API from %s', ngrok_url)
+    })()
+  }
 } else {
   server = app.listen(port)
 }
@@ -40,4 +54,5 @@ server.on('listening', async () => {
 })
 
 // !code: funcs // !end
-// !code: end // !end
+// !code: end
+// !end

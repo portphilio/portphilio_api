@@ -24,6 +24,11 @@ let moduleExports = merge({},
         description: "The owner of the artifact",
         bsonType: "objectId"
       },
+      uuid: {
+        title: "UUID",
+        description: "A \"local\" ID for the artifact",
+        bsonType: "string"
+      },
       uri: {
         title: "URI",
         description: "A publicly-accessable URI for the artifact",

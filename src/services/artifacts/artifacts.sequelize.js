@@ -21,6 +21,10 @@ let moduleExports = merge({},
       type: DataTypes.INTEGER,
       allowNull: false
     },
+    uuid: {
+      description: "A \"local\" ID for the artifact",
+      type: DataTypes.TEXT
+    },
     uri: {
       description: "A publicly-accessable URI for the artifact",
       type: DataTypes.TEXT

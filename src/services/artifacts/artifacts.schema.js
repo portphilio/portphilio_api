@@ -36,6 +36,11 @@ let schema = {
       'description': 'The owner of the artifact',
       'type': 'ID'
     },
+    'uuid': {
+      'title': 'UUID',
+      'description': 'A "local" ID for the artifact',
+      'type': 'string'
+    },
     'uri': {
       'title': 'URI',
       'description': 'A publicly-accessable URI for the artifact',

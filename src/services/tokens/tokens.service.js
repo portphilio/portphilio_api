@@ -16,8 +16,7 @@ let moduleExports = function (app) {
     paginate,
     // !code: options_more
     clientId,
-    clientSecret,
-    users: app.service('auth0/users')
+    clientSecret
     // !end
   }
   // !code: options_change // !end

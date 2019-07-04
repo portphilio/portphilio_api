@@ -37,7 +37,7 @@ let moduleExports = merge({},
       required: true
     },
     kid: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: String,
       required: true,
       unique: true
     },

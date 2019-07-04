@@ -67,7 +67,7 @@ let base = merge({},
       kid: {
         title: "Key ID",
         description: "The unique identifier for the key.",
-        type: ID
+        type: "string"
       },
       x5t: {
         title: "Thumbprint",

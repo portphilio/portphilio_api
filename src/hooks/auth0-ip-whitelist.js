@@ -1,9 +1,7 @@
-const SKIP = require('@feathersjs/feathers').SKIP
 // const logger = require('../logger')
 // const { inspect } = require('util')
 
-// eslint-disable-next-line no-unused-vars
-module.exports = function (options = {}) {
+module.exports = function () {
 
   // Return the actual hook.
   return async (context) => {
@@ -26,13 +24,9 @@ module.exports = function (options = {}) {
       '34.195.142.251',
       '52.200.94.42'
     ]
-    // logger.info(inspect(context.params.headers['x-real-ip'], false, null, true))
+    // logger.info(inspect(context.params, false, null, true))
+    // return a boolean that indicates
     // if the current IP is on the whitelist...
-    if (whitelist.includes(context.params.ip)) {
-      // skip the rest of the hooks
-      return SKIP
-    }
-    // Best practice: hooks should always return the context.
-    return context
+    return whitelist.includes(context.params.ip)
   }
 }

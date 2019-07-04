@@ -19,7 +19,15 @@ let moduleExports = {
     // !code: before
     all: [],
     find: [
-      search()
+      search(),
+      context => {
+        // allow disabling pagination to retrieve ALL artifacts
+        if (context.params.query.$limit === -1) {
+          context.params.paginate = false
+          delete context.params.query.$limit
+        }
+        return context
+      }
     ],
     get: [],
     create: [],
