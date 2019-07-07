@@ -1,6 +1,0 @@
-{
-  "events": {
-    "start": "eslint src/. test/. --config .eslintrc.json",
-    "restart": "eslint src/. test/. --config .eslintrc.json"
-  }
-}
