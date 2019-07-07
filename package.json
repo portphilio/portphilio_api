@@ -1,11 +1,13 @@
 {
   "name": "portphilio-api",
   "description": "API backend for Portphilio",
-  "version": "0.0.0",
-  "homepage": "",
+  "version": "0.1.0",
+  "homepage": "https://portphil.io",
   "main": "src",
   "keywords": [
-    "feathers"
+    "portfolios",
+    "learning management",
+    "portphilio"
   ],
   "author": {
     "name": "Morgan Benton",
@@ -23,9 +25,10 @@
     "npm": ">= 3.0.0"
   },
   "scripts": {
-    "test": "npm run eslint && NODE_ENV= npm run jest",
+    "test": "npm run eslint && cross-env NODE_ENV= npm run jest",
     "eslint": "eslint src/. test/. --config .eslintrc.json",
     "dev": "nodemon src/",
+    "dev:ngrok": "cross-env NODE_ENV=ngrok nodemon src/",
     "start": "node src/",
     "jest": "jest"
   },
@@ -42,8 +45,10 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "cross-env": "^5.2.0",
     "eslint": "^6.0.1",
     "jest": "^24.8.0",
+    "ngrok": "^3.2.1",
     "nodemon": "^1.19.1",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
