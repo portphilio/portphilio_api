@@ -1,4 +1,4 @@
 {
-  "host": "portphilio-api-app.feathersjs.com",
+  "host": "https://api.portphil.io",
   "port": "PORT"
 }

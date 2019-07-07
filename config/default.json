@@ -6,5 +6,6 @@
     "default": 10,
     "max": 50
   },
-  "ngrok-token": "6QGcD68afRKhPB5cVMExU_5NLmp1gLyVffL7MLPaXa1"
+  "ngrok-token": "6QGcD68afRKhPB5cVMExU_5NLmp1gLyVffL7MLPaXa1",
+  "mongodb": "mongodb://localhost:27017/portphilio_api"
 }
