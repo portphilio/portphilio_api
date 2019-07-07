@@ -1,7 +1,7 @@
 
 // Application hooks that run for every service. (Can be re-generated.)
 const commonHooks = require('feathers-hooks-common')
-const requestIsFromAuth0 = require('./hooks/auth0-ip-whitelist')
+const fromAuth0 = require('./hooks/auth0-ip-whitelist')
 // !code: imports
 const log = require('./hooks/log')
 const auth0Sanitize = require('./hooks/auth0-sanitize')
@@ -20,7 +20,7 @@ let moduleExports = {
     // !code: before
     all: [
       log(),
-      unless(some(isProvider('server'), requestIsFromAuth0()), authorize)
+      unless(some(isProvider('server'), isProvider('socketio'), fromAuth0()), authorize)
     ],
     find: [],
     get: [],

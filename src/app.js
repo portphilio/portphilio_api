@@ -25,6 +25,7 @@ const generatorSpecs = require('../feathers-gen-specs.json')
 const mongoose = require('./mongoose')
 // !code: imports
 const auth0 = require('@morphatic/feathers-auth0')
+const socketioJwt = require('socketio-jwt')
 // !end
 // !code: init
 // Domains/IP Addresses whitelisted for CORS
@@ -110,7 +111,16 @@ app.configure(express.rest(
   // !code: express_rest // !end
 ))
 app.configure(socketio(
-  // !code: express_socketio // !end
+  // !code: express_socketio
+  io => {
+    // this WON'T WORK b/c my JWTs are signed with RS256 which requires
+    // verification using the actual signing key
+    io.on('connection', socketioJwt.authorize({
+      // I could replace this with the public key...
+      secret: new Buffer(app.get('auth0options.clientSecret'), 'base64'),
+    }))
+  }
+  // !end
 ))
 // Configure database adapters
 app.configure(mongoose)
