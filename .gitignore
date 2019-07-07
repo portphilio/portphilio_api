@@ -110,3 +110,9 @@ $RECYCLE.BIN/
 # Others
 lib/
 data/
+
+# Config (contains secret tokens)
+config/
+
+# certs
+*.pem
