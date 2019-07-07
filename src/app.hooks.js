@@ -1,5 +1,8 @@
 // Application hooks that run for every service
+const { isProvider, unless } = require('feathers-hooks-common')
+
 const log = require('./hooks/log')
+const auth0Sanitize = require('./hooks/auth0-sanitize')
 
 module.exports = {
   before: {
@@ -14,8 +17,8 @@ module.exports = {
 
   after: {
     all: [ log() ],
-    find: [],
-    get: [],
+    find: [ unless(isProvider('server')), auth0Sanitize() ],
+    get: [ unless(isProvider('server')), auth0Sanitize() ],
     create: [],
     update: [],
     patch: [],
