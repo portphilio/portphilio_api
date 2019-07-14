@@ -17,6 +17,7 @@ const channels = require('./channels')
 
 const mongoose = require('./mongoose')
 const auth0 = require('@morphatic/feathers-auth0')
+const auth = require('./authentication')
 
 const app = express(feathers())
 
@@ -48,6 +49,8 @@ app.configure(channels)
 // User-middleware
 app.configure(auth0())
 app.service('auth0/users').multi = true
+
+app.configure(auth)
 
 // Configure a middleware for 404s and the error handler
 app.use(express.notFound())

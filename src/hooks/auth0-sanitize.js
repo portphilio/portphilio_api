@@ -20,7 +20,9 @@ module.exports = () => {
     if (Array.isArray(users)) {
       users.forEach((u, i) => {
         // remove the app_metadata.google_refresh_token
-        delete users[i].app_metadata.google_refresh_token
+        if (users[i] && users[i].app_metadata) {
+          delete users[i].app_metadata.google_refresh_token
+        }
       })
     } else {
       // remove the app_metadata.google_refresh_token

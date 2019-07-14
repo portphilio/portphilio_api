@@ -46,6 +46,7 @@
     "@feathersjs/feathers": "^4.0.0-pre.4",
     "@feathersjs/socketio": "^4.0.0-pre.4",
     "@morphatic/feathers-auth0": "^0.1.4",
+    "@morphatic/feathers-auth0-strategy": "file:../feathers-auth0-authorize",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "feathers-hooks-common": "^4.20.7",
