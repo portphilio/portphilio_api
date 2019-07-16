@@ -25,7 +25,8 @@ module.exports = function () {
           query[field] = { $in: $search.map(t => new RegExp(t, 'i')) }
         } else {
           // no, convert scalar $search into a $regex
-          query[field] = { $regex: new RegExp($search, 'i') }
+          const $regex = new RegExp($search.replace(',', ' ').replace(/\s+/g, '|'), 'gi')
+          query[field] = { $regex }
         }
       }
     }
