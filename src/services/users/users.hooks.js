@@ -5,16 +5,6 @@ module.exports = {
     get: [],
     create: [],
     update: [],
-    patch: [],
-    remove: []
-  },
-
-  after: {
-    all: [],
-    find: [],
-    get: [],
-    create: [],
-    update: [],
     patch: [
       context => {
         context.params.mongoose = {
@@ -24,6 +14,16 @@ module.exports = {
         return context
       }
     ],
+    remove: []
+  },
+
+  after: {
+    all: [],
+    find: [],
+    get: [],
+    create: [],
+    update: [],
+    patch: [],
     remove: []
   },
 
