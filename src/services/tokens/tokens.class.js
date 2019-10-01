@@ -1,5 +1,5 @@
 const { NotImplemented } = require('@feathersjs/errors')
-const rp = require('request-promise')
+const axios = require('axios')
 const jwt = require('jsonwebtoken')
 
 class Service {
@@ -15,13 +15,13 @@ class Service {
   async update (id) {
     return this.app.service('auth0/users').get(id).then(
       function(user) {
-        return rp({
-          method: 'POST',
-          uri: 'https://www.googleapis.com/oauth2/v4/token',
+        return axios({
+          method: 'post',
+          url: 'https://www.googleapis.com/oauth2/v4/token',
           headers: {
             'content-type': 'application/x-www-form-urlencoded'
           },
-          form: {
+          data: {
             grant_type: 'refresh_token',
             client_id: this.options.clientId,
             client_secret: this.options.clientSecret,
