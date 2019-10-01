@@ -47,7 +47,7 @@
     "@feathersjs/socketio": "^4.3.0-pre.1",
     "@morphatic/feathers-auth0": "^0.1.4",
     "@morphatic/feathers-auth0-strategy": "^0.1.0",
-    "aws-sdk": "^2.497.0",
+    "aws-sdk": "^2.540.0",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "feathers-blob": "^2.1.0",
