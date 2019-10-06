@@ -112,7 +112,8 @@ lib/
 data/
 
 # Config (contains secret tokens)
-config/
+config/*
+!config/test.json
 
 # certs
 *.pem

@@ -1,0 +1,42 @@
+{
+  "authentication": {
+    "auth0": {
+      "autoregister": true,
+      "domain": "portphilio.auth0.com"
+    },
+    "authStrategies": ["auth0"],
+    "entity": "user",
+    "entityId": "user_id",
+    "service": "users"
+  },
+  "auth0options": {
+    "domain": "portphilio.auth0.com",
+    "clientId": "PORTPHILIO_AUTH0_CLIENT_ID",
+    "clientSecret": "PORTPHILIO_AUTH0_CLIENT_SECRET"
+  },
+  "google": {
+    "clientId": "PORTPHILIO_GOOGLE_CLIENT_ID",
+    "clientSecret": "PORTPHILIO_GOOGLE_CLIENT_SECRET"
+  },
+  "host": "api.portphilio.test",
+  "mongodb": "mongodb://localhost:27017/portphilio_test",
+  "owasp": {
+    "allowPassphrases": true,
+    "maxLength": 128,
+    "minLength": 15,
+    "minPhraseLength": 20,
+    "minOptionalTestsToPass": 4
+  },
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "port": 3030,
+  "public": "../public/",
+  "spaces": {
+    "endpoint": "nyc3.digitaloceanspaces.com",
+    "accessKeyId": "PORTPHILIO_SPACES_ID",
+    "secretAccessKey": "PORTPHILIO_SPACES_SECRET",
+    "bucket": "portphilio"
+  }
+}
