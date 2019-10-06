@@ -1,4 +1,4 @@
-const rp = require('request-promise')
+const axios = require('axios')
 const url = require('url')
 const app = require('../src/app')
 
@@ -22,35 +22,38 @@ describe('Feathers application tests (with jest)', () => {
 
   it('starts and shows the index page', () => {
     expect.assertions(1)
-    return rp(getUrl()).then(
-      body => expect(body.indexOf('<html>')).not.toBe(-1)
+    return axios.get(getUrl()).then(
+      body => {
+        expect(body.data.indexOf('<html>')).not.toBe(-1)
+      }
     )
   })
 
   describe('404', () => {
     it('shows a 404 HTML page', () => {
       expect.assertions(2)
-      return rp({
+      return axios({
         url: getUrl('path/to/nowhere'),
         headers: {
           'Accept': 'text/html'
         }
       }).catch(res => {
-        expect(res.statusCode).toBe(404)
-        expect(res.error.indexOf('<html>')).not.toBe(-1)
+        expect(res.response.status).toBe(404)
+        expect(res.response.data.indexOf('<html>')).not.toBe(-1)
       })
     })
 
     it('shows a 404 JSON error without stack trace', () => {
       expect.assertions(4)
-      return rp({
+      return axios({
         url: getUrl('path/to/nowhere'),
         json: true
       }).catch(res => {
-        expect(res.statusCode).toBe(404)
-        expect(res.error.code).toBe(404)
-        expect(res.error.message).toBe('Page not found')
-        expect(res.error.name).toBe('NotFound')
+        const { data, status } = res.response
+        expect(status).toBe(404)
+        expect(data.code).toBe(404)
+        expect(data.message).toBe('Page not found')
+        expect(data.name).toBe('NotFound')
       })
     })
   })

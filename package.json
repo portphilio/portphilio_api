@@ -32,12 +32,14 @@
     "npm": ">= 3.0.0"
   },
   "scripts": {
+    "coverage": "jest --coverage",
     "dev": "nodemon src/",
     "dev:ngrok": "cross-env NODE_ENV=ngrok nodemon src/",
     "eslint": "eslint src/. test/. --config .eslintrc.json",
     "jest": "jest",
     "start": "node src/",
-    "test": "npm run eslint && cross-env NODE_ENV= npm run jest"
+    "test": "npm run eslint && cross-env NODE_ENV=test npm run jest",
+    "watch": "jest --watch"
   },
   "dependencies": {
     "@feathersjs/configuration": "^4.3.4",
