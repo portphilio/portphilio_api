@@ -6,6 +6,9 @@ before_install:
   - npm install -g coveralls
 install:
   - npm install
+before_script:
+  - npm run mongodb >/dev/null 2>&1 &
+  - sleep 30
 script:
   - npm run coverage
 after_script:

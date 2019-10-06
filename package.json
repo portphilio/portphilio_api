@@ -37,6 +37,7 @@
     "dev:ngrok": "cross-env NODE_ENV=ngrok nodemon src/",
     "eslint": "eslint src/. test/. --config .eslintrc.json",
     "jest": "jest",
+    "mongodb": "run-rs -v 4.0.0",
     "start": "node src/",
     "test": "npm run eslint && cross-env NODE_ENV=test npm run jest",
     "watch": "jest --watch"
@@ -70,7 +71,8 @@
     "eslint": "^6.5.1",
     "jest": "^24.9.0",
     "ngrok": "^3.2.5",
-    "nodemon": "^1.19.3"
+    "nodemon": "^1.19.3",
+    "run-rs": "^0.6.1"
   },
   "config": {
     "commitizen": {
