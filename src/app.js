@@ -17,6 +17,7 @@ const channels = require('./channels')
 
 const mongoose = require('./mongoose')
 const auth0 = require('@morphatic/feathers-auth0')
+const { addIP } = require('@morphatic/feathers-auth0-strategy')
 const auth = require('./authentication')
 
 const app = express(feathers())
@@ -40,6 +41,7 @@ app.configure(socketio())
 app.configure(mongoose)
 
 // Configure other middleware (see `middleware/index.js`)
+app.configure(addIP)
 app.configure(middleware)
 // Set up our services (see `services/index.js`)
 app.configure(services)

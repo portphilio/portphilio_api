@@ -30,8 +30,8 @@ if (process.env.NODE_ENV !== 'production') {
       const ngrokUrl = await ngrok.connect({
         proto: 'http',
         addr: `https://api.portphilio.test:${port}`,
-        subdomain: 'api-portphilio',
-        authtoken: app.get('ngrok-token'),
+        subdomain: app.get('ngrok-subdomain') || undefined,
+        authtoken: app.get('ngrok-token') || undefined,
         log: 'stdout',
         bind_tls: true
       })

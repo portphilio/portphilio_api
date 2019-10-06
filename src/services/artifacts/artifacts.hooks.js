@@ -6,7 +6,7 @@ module.exports = {
     find: [
       context => {
         // allow disabling pagination to retrieve ALL artifacts
-        if (context.params.query.$limit === -1) {
+        if (context.params.query.$limit === '-1') {
           context.params.paginate = false
           delete context.params.query.$limit
         }
