@@ -32,7 +32,7 @@
     "npm": ">= 3.0.0"
   },
   "scripts": {
-    "coverage": "jest --coverage --detectOpenHandles",
+    "coverage": "jest --coverage",
     "dev": "nodemon src/",
     "dev:ngrok": "cross-env NODE_ENV=ngrok nodemon src/",
     "eslint": "eslint src/. test/. --config .eslintrc.json",
