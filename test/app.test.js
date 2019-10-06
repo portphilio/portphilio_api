@@ -11,13 +11,14 @@ const getUrl = pathname => url.format({
 })
 
 describe('Feathers application tests (with jest)', () => {
+  let server
   beforeAll(done => {
-    this.server = app.listen(port)
-    this.server.once('listening', () => done())
+    server = app.listen(port)
+    server.once('listening', () => done())
   })
 
   afterAll(done => {
-    this.server.close(done)
+    server.close(done)
   })
 
   it('starts and shows the index page', () => {
