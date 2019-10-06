@@ -18,7 +18,7 @@
     "clientId": "PORTPHILIO_GOOGLE_CLIENT_ID",
     "clientSecret": "PORTPHILIO_GOOGLE_CLIENT_SECRET"
   },
-  "host": "api.portphilio.test",
+  "host": "localhost",
   "mongodb": "mongodb://localhost:27017/portphilio_test",
   "owasp": {
     "allowPassphrases": true,
