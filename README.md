@@ -1,5 +1,9 @@
 # Portphilio API Backend
 
+[![Build Status](https://travis-ci.org/portphilio/portphilio_api.svg?branch=master)](https://travis-ci.org/portphilio/portphilio_api)
+[![Coverage Status](https://coveralls.io/repos/github/portphilio/portphilio_api/badge.svg?branch=master)](https://coveralls.io/github/portphilio/portphilio_api?branch=master)
+![GitHub](https://img.shields.io/github/license/portphilio/portphilio_api)
+
 This is the API backend project for the [Portphilio](https://portphil.io) project. This project uses [Feathers](http://feathersjs.com). An open source web framework for building modern real-time applications.
 
 ## How To Set Up a Dev Environment
