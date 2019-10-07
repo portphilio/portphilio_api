@@ -14,6 +14,7 @@ const port = app.get('port')
 
 // configure the server for various scenarios
 let server
+// if (!['production', 'test'].includes(process.env.NODE_ENV)) {
 if (process.env.NODE_ENV !== 'production') {
   // dev environment; use https locally
   server = https.createServer({
