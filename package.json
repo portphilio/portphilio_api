@@ -55,7 +55,7 @@
     "cors": "^2.8.5",
     "feathers-blob": "^2.1.0",
     "feathers-hooks-common": "^4.20.7",
-    "feathers-memory": "^4.0.1",
+    "feathers-memory": "^4.1.0",
     "feathers-mongoose": "^8.1.0",
     "helmet": "^3.21.1",
     "mongodb-core": "^3.2.7",
