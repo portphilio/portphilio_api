@@ -19,7 +19,7 @@ If you would like to contribute to Portphilio development, here's how you can ge
     6. [MongoDB Compass](https://www.mongodb.com/products/compass) (optional, but nice for seeing what's in the DB)
 2. Clone this repo to your local `dev` folder and install NPM dependencies:
 
-    ```
+    ```sh
     cd ~/dev
     git clone https://github.com/portphilio/portphilio_api.git
     cd portphilio_api
@@ -29,7 +29,7 @@ If you would like to contribute to Portphilio development, here's how you can ge
 3. Edit your `hosts` file ([here's a tutorial](https://www.howtogeek.com/howto/27350/beginner-geek-how-to-edit-your-hosts-file/)) so you can use a "real" domain name on your dev server. Add the entry `127.0.0.1 api.portphilio.test`
 4. Install a local SSL certificate in the root `portphilio_api` directory (command with example output)
 
-    ```
+    ```sh
     $ mkcert api.portphilio.test
     Using the local CA at "/Users/yourusername/Library/Application Support/mkcert" ✨
 
