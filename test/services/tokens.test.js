@@ -5,4 +5,8 @@ describe('\'tokens\' service', () => {
     const service = app.service('tokens')
     expect(service).toBeTruthy()
   })
+
+  it('test name', async () => {
+    
+  })
 })
