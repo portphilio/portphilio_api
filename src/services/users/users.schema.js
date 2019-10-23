@@ -2,277 +2,282 @@
 let schema = {
   title: 'Users',
   description: 'Portphilio users. Schema derived from Auth0 user schema.',
-  required: [
-    'user_id'
-  ],
-  uniqueItemProperties: [
-    'user_id'
-  ],
+  required: ['user_id'],
+  uniqueItemProperties: ['user_id'],
   properties: {
-    'app_metadata': {
-      'title': 'App Metadata',
-      'description': 'Arbitrary, user-related metadata that is NOT editable by the user, e.g. roles. May be sensitive.',
-      'type': 'object',
-      'properties': {
-        'roles': {
-          'type': 'array',
-          'description': 'User roles for this user, e.g. `member`, `admin`, etc.',
-          'minItems': 1,
-          'items': {
-            'type': 'string'
+    app_metadata: {
+      title: 'App Metadata',
+      description:
+        'Arbitrary, user-related metadata that is NOT editable by the user, e.g. roles. May be sensitive.',
+      type: 'object',
+      properties: {
+        roles: {
+          type: 'array',
+          description: 'User roles for this user, e.g. `member`, `admin`, etc.',
+          minItems: 1,
+          items: {
+            type: 'string'
           }
         },
-        'google_refresh_token': {
-          'title': 'Google API Refresh Token',
-          'description': 'Token used to retrieve a new, valid access_token from the Google API',
-          'type': 'string'
+        google_refresh_token: {
+          title: 'Google API Refresh Token',
+          description:
+            'Token used to retrieve a new, valid access_token from the Google API',
+          type: 'string'
         }
       }
     },
-    'blocked': {
-      'title': 'Blocked Status',
-      'description': 'Has the user been blocked?',
-      'type': 'boolean',
-      'default': false
+    blocked: {
+      title: 'Blocked Status',
+      description: 'Has the user been blocked?',
+      type: 'boolean',
+      default: false
     },
-    'blocked_for': {
-      'title': 'Blocked IP Addresses',
-      'description': 'An array of identifier/IP address combos that are blocked for this user',
-      'type': 'array',
-      'minItems': 0,
-      'items': {
-        'type': 'object',
-        'properties': {
-          'identifier': {
-            'type': 'string',
-            'description': 'Can be the user\'s email address, username, user_id, or phone number'
+    blocked_for: {
+      title: 'Blocked IP Addresses',
+      description:
+        'An array of identifier/IP address combos that are blocked for this user',
+      type: 'array',
+      minItems: 0,
+      items: {
+        type: 'object',
+        properties: {
+          identifier: {
+            type: 'string',
+            description:
+              'Can be the user\'s email address, username, user_id, or phone number'
           },
-          'ip_address': {
-            'type': 'string',
-            'description': 'The blocked IP address',
-            'format': 'ipv4'
+          ip_address: {
+            type: 'string',
+            description: 'The blocked IP address',
+            format: 'ipv4'
           }
         },
-        'required': [
-          'identifier',
-          'ip_address'
-        ],
-        'additionalProperties': false
+        required: ['identifier', 'ip_address'],
+        additionalProperties: false
       }
     },
     // NOTE: Mongoose default timestamp is createdAt, i.e. no conflict
-    'created_at': {
-      'title': 'Auth0 Creation Time',
-      'description': 'ISO 8601 datetime when user was created',
-      'type': 'string',
-      'format': 'date-time'
+    created_at: {
+      title: 'Auth0 Creation Time',
+      description: 'ISO 8601 datetime when user was created',
+      type: 'string',
+      format: 'date-time'
     },
-    'email': {
-      'title': 'Email Address',
-      'description': 'Unique email associated with Auth0 identity',
-      'type': 'string',
-      'format': 'email'
+    email: {
+      title: 'Email Address',
+      description: 'Unique email associated with Auth0 identity',
+      type: 'string',
+      format: 'email'
     },
-    'email_verified': {
-      'title': 'Email Verification Status',
-      'description': 'Has the email been verified by the user?',
-      'type': 'boolean',
-      'default': 'false'
+    email_verified: {
+      title: 'Email Verification Status',
+      description: 'Has the email been verified by the user?',
+      type: 'boolean',
+      default: 'false'
     },
-    'family_name': {
-      'title': 'Last Name',
-      'description': 'OIDC-compliant field for last name',
-      'type': 'string'
+    family_name: {
+      title: 'Last Name',
+      description: 'OIDC-compliant field for last name',
+      type: 'string'
     },
-    'gender': {
-      'title': 'Gender',
-      'description': 'Theoretically the user\'s gender. Set by some social providers, e.g. Google.',
-      'type': 'string'
+    gender: {
+      title: 'Gender',
+      description:
+        'Theoretically the user\'s gender. Set by some social providers, e.g. Google.',
+      type: 'string'
     },
-    'given_name': {
-      'title': 'First Name',
-      'description': 'OIDC-compliant field for first name',
-      'type': 'string'
+    given_name: {
+      title: 'First Name',
+      description: 'OIDC-compliant field for first name',
+      type: 'string'
     },
-    'identities': {
-      'title': 'Auth0 Identities',
-      'description': 'List of identity connection metadata objects',
-      'type': 'array',
-      'minItems': 1,
-      'uniqueItems': true,
-      'items': {
-        'type': 'object',
-        'description': 'Contains a provider, user_id, connection type, and whether or not it is a "social" provider',
-        'properties': {
-          'user_id': {
-            'title': 'User ID',
-            'type': 'string',
-            'description': 'A unique identifier generated by the provider'
+    identities: {
+      title: 'Auth0 Identities',
+      description: 'List of identity connection metadata objects',
+      type: 'array',
+      minItems: 1,
+      uniqueItems: true,
+      items: {
+        type: 'object',
+        description:
+          'Contains a provider, user_id, connection type, and whether or not it is a "social" provider',
+        properties: {
+          user_id: {
+            title: 'User ID',
+            type: 'string',
+            description: 'A unique identifier generated by the provider'
           },
-          'provider': {
-            'title': 'Identity Provider (idP)',
-            'type': 'string',
-            'description': 'The entity that provided the associated user_id, e.g. auth0, google, facebook, etc.'
+          provider: {
+            title: 'Identity Provider (idP)',
+            type: 'string',
+            description:
+              'The entity that provided the associated user_id, e.g. auth0, google, facebook, etc.'
           },
-          'connection': {
-            'title': 'Connection Type',
-            'type': 'string',
-            'description': 'How authentication occurs, e.g. OAuth2, username/password, etc.'
+          connection: {
+            title: 'Connection Type',
+            type: 'string',
+            description:
+              'How authentication occurs, e.g. OAuth2, username/password, etc.'
           },
-          'isSocial': {
-            'type': 'boolean',
-            'description': 'Was this user_id issued by a "social" provider, e.g. Google, Facebook, Twitter, GitHub, etc.',
-            'default': false
+          isSocial: {
+            type: 'boolean',
+            description:
+              'Was this user_id issued by a "social" provider, e.g. Google, Facebook, Twitter, GitHub, etc.',
+            default: false
           },
-          'access_token': {
-            'title': 'API Access Token',
-            'type': 'string',
-            'description': 'The API access_token associated with the identity provider'
+          access_token: {
+            title: 'API Access Token',
+            type: 'string',
+            description:
+              'The API access_token associated with the identity provider'
           },
-          'expires_in': {
-            'title': 'Token Expiration',
-            'type': 'integer',
-            'description': 'The number of seconds after which the access_token will expire (for Google, at least)',
-            'minimum': 0
+          expires_in: {
+            title: 'Token Expiration',
+            type: 'integer',
+            description:
+              'The number of seconds after which the access_token will expire (for Google, at least)',
+            minimum: 0
           }
         },
-        'required': [
-          'user_id',
-          'provider',
-          'connection',
-          'isSocial'
-        ],
-        'additionalProperties': true
+        required: ['user_id', 'provider', 'connection', 'isSocial'],
+        additionalProperties: true
       }
     },
-    'guardian_authenticators': {
-      'title': 'MFA Services',
-      'description': 'Guardians are services associated with MFA, e.g. duo, email, sms',
-      'type': 'array',
-      'minItems': 0,
-      'items': {
-        'type': 'object',
-        'description': 'A guardian factor (authenticator)',
-        'properties': {
-          'name': {
-            'title': 'Guardian Name',
-            'description': 'From the enum: duo, email, otp, push_notifications, sms',
-            'type': 'string'
+    guardian_authenticators: {
+      title: 'MFA Services',
+      description:
+        'Guardians are services associated with MFA, e.g. duo, email, sms',
+      type: 'array',
+      minItems: 0,
+      items: {
+        type: 'object',
+        description: 'A guardian factor (authenticator)',
+        properties: {
+          name: {
+            title: 'Guardian Name',
+            description:
+              'From the enum: duo, email, otp, push_notifications, sms',
+            type: 'string'
           },
-          'enabled': {
-            'title': 'Guardian Enabled Status',
-            'description': 'Is this guardian enabled?',
-            'type': 'boolean',
-            'default': false
+          enabled: {
+            title: 'Guardian Enabled Status',
+            description: 'Is this guardian enabled?',
+            type: 'boolean',
+            default: false
           },
-          'is_trial_expired': {
-            'title': 'Guardian Trial Expired',
-            'description': 'Is the trial period expired? (not sure what this means)',
-            'type': 'boolean',
-            'default': false
+          is_trial_expired: {
+            title: 'Guardian Trial Expired',
+            description:
+              'Is the trial period expired? (not sure what this means)',
+            type: 'boolean',
+            default: false
           }
         },
-        'required': [
-          'name',
-          'enabled',
-          'is_trial_expired'
-        ],
-        'additionalProperties': false
+        required: ['name', 'enabled', 'is_trial_expired'],
+        additionalProperties: false
       }
     },
-    'last_ip': {
-      'title': 'Last Login IP',
-      'description': 'The IP address from which the user last logged in',
-      'type': 'string',
-      'format': 'ipv4'
+    last_ip: {
+      title: 'Last Login IP',
+      description: 'The IP address from which the user last logged in',
+      type: 'string',
+      format: 'ipv4'
     },
-    'last_login': {
-      'title': 'Time of Last Login',
-      'description': 'The ISO8601 datetime when the user last logged in',
-      'type': 'string',
-      'format': 'date-time'
+    last_login: {
+      title: 'Time of Last Login',
+      description: 'The ISO8601 datetime when the user last logged in',
+      type: 'string',
+      format: 'date-time'
     },
-    'last_password_reset': {
-      'title': 'Time of Last Password Reset',
-      'description': 'The ISO8601 datetime when the user last reset their password',
-      'type': 'string',
-      'format': 'date-time'
+    last_password_reset: {
+      title: 'Time of Last Password Reset',
+      description:
+        'The ISO8601 datetime when the user last reset their password',
+      type: 'string',
+      format: 'date-time'
     },
-    'locale': {
-      'title': 'i18n Locale',
-      'description': 'ISO 639-1 code associated with user\'s preferred locale, e.g.',
-      'type': 'string'
+    locale: {
+      title: 'i18n Locale',
+      description:
+        'ISO 639-1 code associated with user\'s preferred locale, e.g.',
+      type: 'string'
     },
-    'logins_count': {
-      'title': 'Login Count',
-      'description': 'The number of times the user has logged in',
-      'type': 'number',
-      'minimum': 0,
-      'default': 0
+    logins_count: {
+      title: 'Login Count',
+      description: 'The number of times the user has logged in',
+      type: 'number',
+      minimum: 0,
+      default: 0
     },
-    'multifactor': {
-      'title': 'MFA Providers',
-      'description': 'The list of multi-factor providers in which the user is enrolled',
-      'type': 'array',
-      'minItems': 0,
-      'items': {
-        'type': 'string'
+    multifactor: {
+      title: 'MFA Providers',
+      description:
+        'The list of multi-factor providers in which the user is enrolled',
+      type: 'array',
+      minItems: 0,
+      items: {
+        type: 'string'
       }
     },
-    'name': {
-      'title': 'Name',
-      'description': 'The full, formal name of the person',
-      'type': 'string'
+    name: {
+      title: 'Name',
+      description: 'The full, formal name of the person',
+      type: 'string'
     },
-    'nickname': {
-      'title': 'Nickname',
-      'description': 'The name by which this person prefers to be called',
-      'type': 'string'
+    nickname: {
+      title: 'Nickname',
+      description: 'The name by which this person prefers to be called',
+      type: 'string'
     },
-    'password_set_date': {
-      'title': 'Password Set Date',
-      'description': 'The ISO8601 datetime when the user set their password; may be identical to `last_password_reset`',
-      'type': 'string',
-      'format': 'date-time'
+    password_set_date: {
+      title: 'Password Set Date',
+      description:
+        'The ISO8601 datetime when the user set their password; may be identical to `last_password_reset`',
+      type: 'string',
+      format: 'date-time'
     },
-    'phone_number': {
-      'title': 'Phone Number',
-      'description': 'This user\'s phone number, typically only available if SMS is used for MFA',
-      'type': 'string'
+    phone_number: {
+      title: 'Phone Number',
+      description:
+        'This user\'s phone number, typically only available if SMS is used for MFA',
+      type: 'string'
     },
-    'phone_verified': {
-      'title': 'Phone Verified Status',
-      'description': 'Has the user verified that their `phone_number` is valid?',
-      'type': 'boolean',
-      'default': false
+    phone_verified: {
+      title: 'Phone Verified Status',
+      description: 'Has the user verified that their `phone_number` is valid?',
+      type: 'boolean',
+      default: false
     },
-    'picture': {
-      'title': 'Picture',
-      'description': 'A URL that points to a profile picture or avatar. Defaults to gravatar.',
-      'type': 'string',
-      'format': 'uri'
+    picture: {
+      title: 'Picture',
+      description:
+        'A URL that points to a profile picture or avatar. Defaults to gravatar.',
+      type: 'string',
+      format: 'uri'
     },
     // NOTE: Mongoose default timestamp is updatedAt, i.e. no conflict
-    'updated_at': {
-      'title': 'Updated',
-      'description': 'The ISO8601 datetime when the user was updated',
-      'type': 'string',
-      'format': 'date-time'
+    updated_at: {
+      title: 'Updated',
+      description: 'The ISO8601 datetime when the user was updated',
+      type: 'string',
+      format: 'date-time'
     },
-    'user_id': {
-      'title': 'Auth0 UserID',
-      'description': 'The user_id from Auth0 for this member.',
-      'type': 'string'
+    user_id: {
+      title: 'Auth0 UserID',
+      description: 'The user_id from Auth0 for this member.',
+      type: 'string'
     },
-    'user_metadata': {
-      'title': 'User Metadata',
-      'description': 'Arbitrary, user-related metadata that is editable by the user, e.g. profile info',
-      'type': 'object'
+    user_metadata: {
+      title: 'User Metadata',
+      description:
+        'Arbitrary, user-related metadata that is editable by the user, e.g. profile info',
+      type: 'object'
     },
-    'username': {
-      'title': 'Username',
-      'description': 'The user\'s unique username (not typically set)',
-      'type': 'string'
+    username: {
+      title: 'Username',
+      description: 'The user\'s unique username (not typically set)',
+      type: 'string'
     }
   }
 }

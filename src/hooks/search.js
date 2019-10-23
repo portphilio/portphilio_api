@@ -3,10 +3,9 @@
  */
 const { checkContext } = require('feathers-hooks-common')
 
-module.exports = function () {
-
+module.exports = function() {
   // Return the actual hook.
-  return async context => {
+  return context => {
     // Only allow this before find() queries
     checkContext(context, 'before', ['find'])
 
@@ -25,7 +24,7 @@ module.exports = function () {
           query[field] = { $in: $search.map(t => new RegExp(t, 'i')) }
         } else {
           // no, convert scalar $search into a $regex
-          const $regex = new RegExp($search.replace(',', ' ').replace(/\s+/g, '|'), 'gi')
+          const $regex = new RegExp($search.replace(/,\s*|\s+/g, '|'),'gi')
           query[field] = { $regex }
         }
       }

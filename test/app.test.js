@@ -3,12 +3,13 @@ const url = require('url')
 const app = require('../src/app')
 
 const port = app.get('port') || 3030
-const getUrl = pathname => url.format({
-  hostname: app.get('host') || 'localhost',
-  protocol: 'http',
-  port,
-  pathname
-})
+const getUrl = pathname =>
+  url.format({
+    hostname: app.get('host') || 'localhost',
+    protocol: 'http',
+    port,
+    pathname
+  })
 
 describe('Feathers application tests (with jest)', () => {
   let server
@@ -23,11 +24,9 @@ describe('Feathers application tests (with jest)', () => {
 
   it('starts and shows the index page', () => {
     expect.assertions(1)
-    return axios.get(getUrl()).then(
-      body => {
-        expect(body.data.indexOf('<html>')).not.toBe(-1)
-      }
-    )
+    return axios.get(getUrl()).then(body => {
+      expect(body.data.indexOf('<html>')).not.toBe(-1)
+    })
   })
 
   describe('404', () => {
@@ -36,7 +35,7 @@ describe('Feathers application tests (with jest)', () => {
       return axios({
         url: getUrl('path/to/nowhere'),
         headers: {
-          'Accept': 'text/html'
+          Accept: 'text/html'
         }
       }).catch(res => {
         expect(res.response.status).toBe(404)

@@ -2,8 +2,7 @@
 const createService = require('./tokens.class')
 const hooks = require('./tokens.hooks')
 
-module.exports = function (app) {
-  
+module.exports = function(app) {
   const paginate = app.get('paginate')
   let { clientId, clientSecret } = app.get('google')
 

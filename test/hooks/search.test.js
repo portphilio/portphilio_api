@@ -1,25 +1,29 @@
-const search = require('../../src/hooks/search.js')
+const searchHook = require('../../src/hooks/search')
 
-describe('Customized search hook', () => {
-  const context = {
-    params: {
-      query: {
-        $limit: 3,
-        first_name: {
-          $search: ['bob', 'joe', 'sue']
-        },
-        last_name: {
-          $search: 'thump'
+describe('The search() hook', () => {
+  const search = searchHook()
+
+  it('Search.js functionality', () => {
+    //expect.assertions(5)
+    const context = {
+      type: 'before',
+      params: {
+        query: {
+          $limit: 3,
+          first_name: {
+            $search: ['bob', 'joe', 'sue']
+          },
+          last_name: {
+            $search: 'blue, green,orange, red,     portphilio'
+          }
         }
       }
     }
-  }
 
-  // const query = context.params.query
+    const $regex = /blue|green|orange|red|portphilio/gi
 
-  // Edit after I find out how the outputted query is modified
-  const testContext = {
-    context: {
+    const testContext = {
+      type: 'before',
       params: {
         query: {
           $limit: 3,
@@ -31,21 +35,17 @@ describe('Customized search hook', () => {
             ]
           },
           last_name: {
-            //$regex = new RegExp('thump', 'gi')
+            $regex
           }
         }
       }
     }
-  }
 
-  it('Search.js functionality', () => {
-    expect.assertions(2)
+    const result = search(context)
 
-    const output = search(context)
-    const expected = testContext.params.query
-    console.log(output)
-    console.log(expected)
-    expect(output.params.query).toBe(expected)
-    expect(output.params.query[0]).toBe(3)
+    console.log(Array.isArray(result.params.query))
+    console.log(result.params.query.$limit.value())
+
+    expect(result).toStrictEqual(testContext)
   })
 })

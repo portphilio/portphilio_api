@@ -1,5 +1,5 @@
 module.exports = function(app) {
-  if(typeof app.channel !== 'function') {
+  if (typeof app.channel !== 'function') {
     // If no real-time functionality has been configured just return
     return
   }
@@ -11,7 +11,7 @@ module.exports = function(app) {
 
   app.on('login', (authResult, { connection }) => {
     // connection can be undefined if there is no
-    if(connection) {
+    if (connection) {
       // The connection is no longer anonymous, remove it
       app.channel('anonymous').leave(connection)
 
@@ -24,7 +24,7 @@ module.exports = function(app) {
    * App events
    */
   app.publish(() => {
-    console.log('Publishing all events to all authenticated users.'); // eslint-disable-line
+    console.log('Publishing all events to all authenticated users.') // eslint-disable-line
     return app.channel('authenticated')
   })
 }

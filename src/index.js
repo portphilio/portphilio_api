@@ -17,10 +17,13 @@ let server
 // if (!['production', 'test'].includes(process.env.NODE_ENV)) {
 if (process.env.NODE_ENV !== 'production') {
   // dev environment; use https locally
-  server = https.createServer({
-    key: fs.readFileSync('./api.portphilio.test-key.pem', 'utf8'),
-    cert: fs.readFileSync('./api.portphilio.test.pem', 'utf8')
-  }, app)
+  server = https.createServer(
+    {
+      key: fs.readFileSync('./api.portphilio.test-key.pem', 'utf8'),
+      cert: fs.readFileSync('./api.portphilio.test.pem', 'utf8')
+    },
+    app
+  )
   // start up the server
   server.listen(port)
   // re-run setup; see: https://crow.docs.feathersjs.com/api/express.html#https

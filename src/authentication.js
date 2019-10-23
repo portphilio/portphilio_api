@@ -1,4 +1,7 @@
-const { Auth0Service, Auth0Strategy } = require('@morphatic/feathers-auth0-strategy')
+const {
+  Auth0Service,
+  Auth0Strategy
+} = require('@morphatic/feathers-auth0-strategy')
 
 module.exports = app => {
   const authService = new Auth0Service(app)

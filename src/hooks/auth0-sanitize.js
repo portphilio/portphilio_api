@@ -3,7 +3,11 @@
  * sent to clients.
  */
 
-const { checkContext, getItems, replaceItems } = require('feathers-hooks-common')
+const {
+  checkContext,
+  getItems,
+  replaceItems
+} = require('feathers-hooks-common')
 
 module.exports = () => {
   return context => {
