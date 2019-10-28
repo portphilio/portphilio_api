@@ -43,8 +43,8 @@ describe('The search() hook', () => {
 
     const result = search(context)
 
-    console.log(Array.isArray(result.params.query))
-    console.log(result.params.query.$limit.value())
+    //console.log(Array.isArray(result.params.query))
+    //console.log(result.params.query.$limit.value())
 
     expect(result).toStrictEqual(testContext)
   })
