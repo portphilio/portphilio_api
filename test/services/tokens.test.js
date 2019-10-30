@@ -7,7 +7,7 @@ describe('\'tokens\' service', () => {
     expect(service).toBeTruthy()
   })
 
-  it('test name', async () => {
+  it('initialize the tokens', async () => {
     
   })
 })
