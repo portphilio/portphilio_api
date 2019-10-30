@@ -1,4 +1,5 @@
 const app = require('../../src/app')
+const serviceToken = require ('../../src/services/tokens/tokens.service')
 
 describe('\'tokens\' service', () => {
   it('registered the service', () => {
