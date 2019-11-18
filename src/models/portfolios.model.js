@@ -13,9 +13,19 @@ module.exports = app => {
       type: mongoose.Schema.Types.ObjectId,
       required: true
     },
-    artifacts: {
-      type: mongoose.Schema.Types.ObjectId
-    }
+    uuid: String,
+    artifacts: [
+      {
+        type: mongoose.Schema.Types.ObjectId
+      }
+    ],
+    narrative: String,
+    tags: [
+      String
+    ]
+  },
+  {
+    timestamps: true
   })
 
   return mongooseClient.model('portfolios', portfolios)
