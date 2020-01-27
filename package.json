@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "@feathersjs/configuration": "^4.3.4",
-    "@feathersjs/errors": "^4.3.4",
+    "@feathersjs/errors": "^4.5.1",
     "@feathersjs/express": "^4.3.5",
     "@feathersjs/feathers": "^4.3.4",
     "@feathersjs/socketio": "^4.3.5",
