@@ -43,7 +43,7 @@
     "watch": "jest --watch"
   },
   "dependencies": {
-    "@feathersjs/configuration": "^4.3.4",
+    "@feathersjs/configuration": "^4.5.10",
     "@feathersjs/errors": "^4.3.4",
     "@feathersjs/express": "^4.3.5",
     "@feathersjs/feathers": "^4.3.4",
