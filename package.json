@@ -47,7 +47,7 @@
     "@feathersjs/errors": "^4.3.4",
     "@feathersjs/express": "^4.3.5",
     "@feathersjs/feathers": "^4.3.4",
-    "@feathersjs/socketio": "^4.3.5",
+    "@feathersjs/socketio": "^4.5.11",
     "@morphatic/feathers-auth0": "^1.0.1",
     "@morphatic/feathers-auth0-strategy": "^1.0.0",
     "aws-sdk": "^2.545.0",
