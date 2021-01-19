@@ -57,7 +57,7 @@
     "feathers-hooks-common": "^4.20.7",
     "feathers-memory": "^4.1.0",
     "feathers-mongoose": "^8.1.0",
-    "helmet": "^3.21.1",
+    "helmet": "^4.4.1",
     "mongodb-core": "^3.2.7",
     "mongoose": "^5.7.3",
     "s3-blob-store": "^3.2.0",
